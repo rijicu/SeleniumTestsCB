@@ -13,6 +13,8 @@ public class MainPage extends AbstractPage {
     private String userPass = "12345678";
     private String adminLogin = "admin";
     private String adminPass = "1";
+    private String treatyUserLogin = "TumanovaNA";
+    private String treatyUserPass = "12345678";
 
     @FindBy(id = "login")
     private WebElement loginFild;
@@ -41,6 +43,8 @@ public class MainPage extends AbstractPage {
     private By myAccountsPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Account/List\']");
     private By paymentsMenuLink = By.xpath("//span[contains(normalize-space(@class), 'icon icon-menu-payments')]");
     private By paymentsHistoryPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Payment/List\']");
+    private By creditsMenuLink = By.xpath("//li[6]/p");
+    private By allCreditsPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Treaty/CreditsList\']");
 
     public void loginToiTiny(String login, String password){
         driver.get(baseUrl);
@@ -69,6 +73,15 @@ public class MainPage extends AbstractPage {
         return new MyAccountsPage();
     }
 
+    public AllCreditsPage openAllCreditsPage(){
+        clickAt(creditsMenuLink);
+        clickAt(allCreditsPageLink);
+        waitUntilLoadingImageNotPresent();
+        //driver.findElement(accountsMenuLink).click();
+        //driver.findElement(myAccountsPageLink).click();
+        return new AllCreditsPage();
+    }
+
     public PaymentsHistoryPage openPaymentsHistoryPage(){
         clickAt(paymentsMenuLink);
         clickAt(paymentsHistoryPageLink);
@@ -83,6 +96,9 @@ public class MainPage extends AbstractPage {
         //System.out.println(getElementsListOnPage(accountsListOnMainPage).size());
     }
 
+    public void loginAsTreatyUser()throws Exception{
+        loginToiTiny(treatyUserLogin, treatyUserPass);
+    }
 
     public void loginAsUser()throws Exception{
         loginToiTiny(userLogin, userPass);
