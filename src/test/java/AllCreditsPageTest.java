@@ -33,7 +33,11 @@ public class AllCreditsPageTest {
     }
 
     @Test
-    public void findTreatyByTreatyNumber(){
+    public void findTreatyByAccNumber(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .findTreatyByAccountNumber();
+        Assert.assertEquals(allCreditsPage.getAccountNumberOnTreatyList(),"20630000000118.980");
 
     }
 

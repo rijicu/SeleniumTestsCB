@@ -74,6 +74,10 @@ public abstract class AbstractPage {
         filterApplyButton.isDisplayed();
     }
 
+    public void clickApplyButton(){
+        filterApplyButton.click();
+    }
+
     public List<WebElement> getElementsListOnPage(By element){
         return driver.findElements(element);
     }
