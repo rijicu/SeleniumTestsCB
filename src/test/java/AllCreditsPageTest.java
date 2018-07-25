@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -23,7 +24,17 @@ public class AllCreditsPageTest {
 
     @Test
     public void openAllCreditsPage(){
-        mainPage.openAllCreditsPage();
+        mainPage.openUserMainPage()
+                .openAllCreditsPage();
+        Assert.assertEquals(allCreditsPage.numbersOfTreatiesOnPage(), 10);
+
+        //mainPage.openAllCreditsPage();
+        //System.out.println(allCreditsPage.numbersOfTreatiesOnPage());
+    }
+
+    @Test
+    public void findTreatyByTreatyNumber(){
+
     }
 
     @AfterClass
