@@ -15,6 +15,7 @@ public class AllCreditsPage extends AbstractPage {
 
 
 
+
     public int numbersOfTreatiesOnPage(){
        //return driver.findElements(creditTreatysLinks).size();
         return getElementsListOnPage(creditTreatysLinks).size();
@@ -25,6 +26,11 @@ public class AllCreditsPage extends AbstractPage {
         selectOptionByXpath(accountSelectField, accountNumberLink);
         clickApplyButton();
         waitUntilLoadingImageNotPresent();
+    }
+
+    public CreditDetailsPage openCreditDetailsPage(By treatyLink){
+        clickAt(treatyLink);
+        return new CreditDetailsPage();
     }
 
     public String getAccountNumberOnTreatyList(){
