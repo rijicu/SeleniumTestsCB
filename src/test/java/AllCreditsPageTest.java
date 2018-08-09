@@ -28,8 +28,6 @@ public class AllCreditsPageTest {
                 .openAllCreditsPage();
         Assert.assertEquals(allCreditsPage.numbersOfTreatiesOnPage(), 10);
 
-        //mainPage.openAllCreditsPage();
-        //System.out.println(allCreditsPage.numbersOfTreatiesOnPage());
     }
 
     @Test

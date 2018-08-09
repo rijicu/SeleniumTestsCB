@@ -157,6 +157,7 @@ public class MyAccountsPage extends AbstractPage {
         //wait.until(ExpectedConditions.attributeToBe(By.xpath("//input[@name='AccountId_input']"),"value","26001200558866.980 ФОП \"Стойков\""));
         waitForAccountFieldOnFilterNotEmpty();
         filterApplyButton.isEnabled();
+        waitForVisibilityOf(By.className("action-apply"),5);
         filterApplyButton.click();
         //wait.until(ExpectedConditions.attributeToBe(By.name("AccountId_input").))
         //wait.until(ExpectedConditions.textToBe(By.xpath(".//*[@id='reportViewer']/div/div[2]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[22]/div"),"26001200558866.980"));
