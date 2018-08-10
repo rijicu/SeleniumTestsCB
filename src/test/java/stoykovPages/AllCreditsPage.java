@@ -12,7 +12,8 @@ public class AllCreditsPage extends AbstractPage {
     private By accountSelectField = By.xpath("//span[@aria-owns=\"accounts_listbox\"]");
     private By accountNumberLink = By.xpath("//span[@data-value=\"20630000000118.980\"]");
     private By accountNumberOnTreatyList = By.xpath("//td[text()=\"20630000000118.980\"]");
-
+    private By treatyNameColumn = By.xpath("//td[text()='Name sets by test']");
+    private By newTreatyNameColumn = By.xpath("//td[text()='New Test Name']");
 
 
 
@@ -35,6 +36,14 @@ public class AllCreditsPage extends AbstractPage {
 
     public String getAccountNumberOnTreatyList(){
         return driver.findElement(accountNumberOnTreatyList).getText();
+    }
+
+    public boolean isCorrectTreatyName(){
+        return isElementPresent(treatyNameColumn);
+    }
+
+    public boolean isNewTreatyNameCorrect(){
+        return isElementPresent(newTreatyNameColumn);
     }
 
 

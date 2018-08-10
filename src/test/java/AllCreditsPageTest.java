@@ -59,8 +59,28 @@ public class AllCreditsPageTest {
                 .openAllCreditsPage()
                 .openCreditDetailsPage(creditTreatyActiveStatus);
         Assert.assertTrue(creditDetailsPage.isTreatyNumberPresentOnDetailsPage(), "Treaty number is not present on treaty details page!\n");
-
     }
+
+    @Test
+    public void changeTreatyName() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .changeTreatyLocalName();
+        mainPage.openAllCreditsPage();
+        Assert.assertTrue(allCreditsPage.isCorrectTreatyName(), "Treaty name not changed!\n");
+    }
+
+    @Test
+    public void setTreatyNewName() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .setTreatyNewLocalName();
+        mainPage.openAllCreditsPage();
+        Assert.assertTrue(allCreditsPage.isNewTreatyNameCorrect(), "New Treaty name not set!\n");
+    }
+
 
     @AfterClass
     public void tearDown(){
