@@ -7,7 +7,14 @@ import org.openqa.selenium.By;
  */
 public class CreditDetailsPage extends AbstractPage {
 
+    private By messageLinkAboutDelay = By.xpath("//span[@class='text']");
+    private By treatyNumberOnDetailsPageLink = By.xpath("//div[text()='N20.00.004174']");
+
     public String getMessageTextAboutDelay(){
-        return getText(By.xpath("//span[@class='text']"));
+        return getText(messageLinkAboutDelay);
+    }
+
+    public boolean isTreatyNumberPresentOnDetailsPage(){
+        return isElementPresent(treatyNumberOnDetailsPageLink);
     }
 }

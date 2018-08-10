@@ -13,7 +13,7 @@ import stoykovUtils.DriverFactory;
  */
 public class AllCreditsPageTest {
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
-    private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004172 ']");
+    private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
 
 
     private MainPage mainPage = new MainPage();
@@ -45,12 +45,21 @@ public class AllCreditsPageTest {
     }
 
     @Test
-    public void openTreatyDetailsPage(){
+    public void openTreatyWithDelayDetailsPage(){
         mainPage.openUserMainPage()
                 .openAllCreditsPage()
                 .openCreditDetailsPage(creditTreatyWithDelayStatus);
         //System.out.println(creditDetailsPage.getMessageTextAboutDelay());
         Assert.assertEquals(creditDetailsPage.getMessageTextAboutDelay(), "За договором є прострочення! Зверніться в банк для уточнення суми штрафних санкцій, що підлягають додатковій оплаті." );
+    }
+
+    @Test
+    public void openActiveTreatyDetailsPage() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus);
+        Assert.assertTrue(creditDetailsPage.isTreatyNumberPresentOnDetailsPage(), "Treaty number is not present on treaty details page!\n");
+
     }
 
     @AfterClass
