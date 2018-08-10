@@ -13,6 +13,7 @@ public class CreditDetailsPage extends AbstractPage {
 
     private By messageLinkAboutDelay = By.xpath("//span[@class='text']");
     private By treatyNumberOnDetailsPageLink = By.xpath("//div[text()='N20.00.004174']");
+    private By tretyAccountStatementButton = By.xpath("//p[text()='Виписка ']");
     //private By treatyLocalNameField = By.xpath("//textarea[@id='localName']");
 
     @FindBy(id = "localName")
@@ -21,6 +22,10 @@ public class CreditDetailsPage extends AbstractPage {
     @FindBy(xpath = "//div[contains((@class), 'action-savename')]")
     private WebElement changeTreatyNameButton;
 
+    public StatementPage openTreatyStatementPage(){
+        clickAt(tretyAccountStatementButton);
+        return new StatementPage();
+    }
 
     public String getMessageTextAboutDelay(){
         return getText(messageLinkAboutDelay);

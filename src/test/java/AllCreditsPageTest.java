@@ -81,6 +81,16 @@ public class AllCreditsPageTest {
         Assert.assertTrue(allCreditsPage.isNewTreatyNameCorrect(), "New Treaty name not set!\n");
     }
 
+    @Test
+    public void  checkTreatyStatement() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openTreatyStatementPage();
+        //check only text message on the page
+        //Assert.assertEquals();
+    }
+
 
     @AfterClass
     public void tearDown(){
