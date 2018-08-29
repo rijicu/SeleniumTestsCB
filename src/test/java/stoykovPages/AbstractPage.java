@@ -39,7 +39,7 @@ public abstract class AbstractPage {
     private WebElement accountFieldLinkOnFilter;
 
     @FindBy(className = "action-apply")
-    private WebElement filterApplyButton;
+    public WebElement filterApplyButton;
 
     @FindBy(xpath = "//p[@class='action-clean']")
     private WebElement cleanButtonLink;

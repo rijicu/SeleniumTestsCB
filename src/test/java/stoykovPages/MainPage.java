@@ -45,6 +45,7 @@ public class MainPage extends AbstractPage {
     private By paymentsHistoryPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Payment/List\']");
     private By creditsMenuLink = By.xpath("//li[5]/p");
     private By allCreditsPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Treaty/CreditsList\']");
+    private By statementMenuLink = By.xpath("//a[@href=\'/iTiny20_Night/Account/Extract\']");
 
     public void loginToiTiny(String login, String password){
         driver.get(baseUrl);
@@ -53,6 +54,13 @@ public class MainPage extends AbstractPage {
         passwordFild.clear();
         passwordFild.sendKeys(password);
         loginButton.click();
+    }
+
+    public StatementPage openStatementPage(){
+        clickAt(accountsMenuLink);
+        waitForVisibilityOf(statementMenuLink);
+        clickAt(statementMenuLink);
+        return new StatementPage();
     }
 
     public MainPage openUserMainPage()  {

@@ -24,9 +24,9 @@ public class MyAccountsPageTest {
     WebDriver driver = DriverFactory.getDriver();
     private String accountNumber = "26001200558866.980";
     private String accountNumberOnCreatePaymentPage = "26001200558866.980 ФОП \"Стойков\"";
-    private String accountStatementPageTitle = "iTiny - Виписка";
-    private String accountHistoryPageTitle = "АБанк - Мої платежі";
-    private String createDocumentPageTitle = "АБанк - Створити платіж";
+    private String accountStatementPageTitle = "А24 Бізнес - Виписка";
+    private String accountHistoryPageTitle = "А24 Бізнес - Мої платежі";
+    private String createDocumentPageTitle = "А24 Бізнес - Створити платіж";
     private List<String> firstAccountNumbers = new ArrayList<String>() {{
         add("2600458475.980");
         add("260008458455.840");
