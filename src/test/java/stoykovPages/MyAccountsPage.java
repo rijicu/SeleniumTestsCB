@@ -35,8 +35,8 @@ public class MyAccountsPage extends AbstractPage {
     private By accountsListOnMyAccountsPage = By.xpath("//tbody[@role='rowgroup']//tr");
     private By firstRowInCurrencyColumn = By.xpath("");
     private By numbersOfItemsOnPageOption = By.xpath("//div[@id='accounts']//span[@class=\"k-select\"]");
-    private By tenItemsInTableOption = By.xpath("//div[10]//li[text()=\"10\"]");
-    private By twentyItemsInTableOption = By.xpath("//div[10]//li[text()=\"20\"]");
+    private By tenItemsInTableOption = By.xpath("//div[@class='k-animation-container']//li[text()='10']"); //By.cssSelector(".k-animation-container>div>ul>li");//By.xpath("//div[10]//li[text()=\"10\"]");
+    private By twentyItemsInTableOption = By.xpath("//div[@class='k-animation-container']//li[text()='20']");
     private By accountNumberInStatement = By.xpath("//td[5]/div/div");
 
     @FindBy(xpath = "//div[@id='accounts']//span[@class=\"k-select\"]")

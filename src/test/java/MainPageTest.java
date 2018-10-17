@@ -13,9 +13,9 @@ public class MainPageTest {
     private MainPage mainPage = new MainPage();
 
     private By numbersOfItemsOnPageOption = By.xpath("//div[@class='accounts']//span[@class=\"k-select\"]");
-    private By fiveItemsInTableOption = By.xpath("//div[11]//li[text()=\"5\"]");
-    private By tenItemsInTableOption = By.xpath("//div[11]//li[text()=\"10\"]");
-    private By twentyItemsInTableOption = By.xpath("//div[11]//li[text()=\"20\"]");
+    private By fiveItemsInTableOption = By.xpath("//div[@class='k-animation-container']//li[text()='5']");
+    private By tenItemsInTableOption = By.xpath("//div[@class='k-animation-container']//li[text()='10']");
+    private By twentyItemsInTableOption = By.xpath("//div[@class='k-animation-container']//li[text()='20']");
 
 
 /*    @BeforeClass
@@ -48,7 +48,8 @@ public class MainPageTest {
         Assert.assertEquals(5,mainPage.getNumbersOfAccounts());
         mainPage
                 .openUserMainPage()
-                .selectOptionByXpath(numbersOfItemsOnPageOption,tenItemsInTableOption);
+                .waitUntilLoadingImageNotPresent();
+                mainPage.selectOptionByXpath(numbersOfItemsOnPageOption,tenItemsInTableOption);
         mainPage.waitUntilLoadingImageNotPresent();
 /*        int accounts1 = mainPage.getNumbersOfAccounts();
         System.out.println(accounts1);*/
@@ -56,7 +57,8 @@ public class MainPageTest {
 
         mainPage
                 .openUserMainPage()
-                .selectOptionByXpath(numbersOfItemsOnPageOption,twentyItemsInTableOption);
+                .waitUntilLoadingImageNotPresent();
+                mainPage.selectOptionByXpath(numbersOfItemsOnPageOption,twentyItemsInTableOption);
         mainPage.waitUntilLoadingImageNotPresent();
         int accounts = mainPage.getNumbersOfAccounts();
         Assert.assertTrue(accounts>10);

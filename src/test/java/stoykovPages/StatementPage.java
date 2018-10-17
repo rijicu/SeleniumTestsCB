@@ -16,6 +16,7 @@ public class StatementPage extends AbstractPage {
     }
 
     public boolean isCorrectClientOnPage(){
+        waitForVisibilityOf(By.xpath("//tr[9]/td[3]/div/div"));
         String clientOnStatement = getText(By.xpath("//tr[9]/td[3]/div/div"));
         String clientOnHeader = getText(By.className("username"));
         System.out.println(clientOnHeader);
