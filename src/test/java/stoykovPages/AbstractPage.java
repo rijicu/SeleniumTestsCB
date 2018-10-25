@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import stoykovUtils.DriverFactory;
 
@@ -52,6 +53,11 @@ public abstract class AbstractPage {
         if (isElementPresent(by)){
            // String elementText =
         }
+    }
+
+    public void clearFilter( ){
+        openFilter();
+        pressOnCleanFilterButton();
     }
 
     public void pressOnCleanFilterButton(){

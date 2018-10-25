@@ -85,6 +85,7 @@ public class MainPage extends AbstractPage {
         clickAt(creditsMenuLink);
         clickAt(allCreditsPageLink);
         waitUntilLoadingImageNotPresent();
+        clearFilter();
         return new AllCreditsPage();
     }
 

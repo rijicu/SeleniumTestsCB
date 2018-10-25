@@ -31,7 +31,7 @@ public class AllCreditsPage extends AbstractPage {
     }
 
     public void findTreatyByAccountNumber(){
-        openFilter();
+        //openFilter();
         selectOptionByXpath(accountSelectField, accountNumberLink);
         clickApplyButton();
         waitUntilLoadingImageNotPresent();
