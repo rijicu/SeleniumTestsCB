@@ -24,6 +24,13 @@ public class CreditDetailsPage extends AbstractPage {
     private WebElement paymentCalendarButton;
     @FindBy(css="div[data-url*='TreatyCreditActions']>p")
     private WebElement operationsHistoryButton;
+    @FindBy(css="div[data-url*='CreditPay']>p")
+    private WebElement partialRepaymentButton;
+
+    public PartialRepaymentPage openPartialRepaymentPage(){
+        partialRepaymentButton.click();
+        return new PartialRepaymentPage();
+    }
 
     public CreditsOperationsHistoryPage openCreditsOperationsHistoryPage(){
         operationsHistoryButton.click();

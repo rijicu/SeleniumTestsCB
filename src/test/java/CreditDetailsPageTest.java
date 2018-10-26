@@ -25,6 +25,15 @@ public class CreditDetailsPageTest {
     }
 
     @Test
+    public void createPartialRepayment(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openPartialRepaymentPage();
+
+    }
+
+    @Test
     public void checkTreatyOperationsHistory(){
         mainPage.openUserMainPage()
                 .openAllCreditsPage()
