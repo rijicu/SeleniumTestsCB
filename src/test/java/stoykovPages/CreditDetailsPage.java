@@ -22,6 +22,15 @@ public class CreditDetailsPage extends AbstractPage {
     @FindBy(xpath = "//div[contains((@class), 'action-savename')]")
     private WebElement changeTreatyNameButton;
 
+    @FindBy(css = "div[data-url*='CreditsEvents']>p")
+    private WebElement paymentCalendarButton;
+
+    public PaymentCalendarPage openPaymentCalendarPage(){
+        paymentCalendarButton.click();
+        waitUntilLoadingImageNotPresent();
+        return new PaymentCalendarPage();
+    }
+
     public StatementPage openTreatyStatementPage(){
         clickAt(tretyAccountStatementButton);
         return new StatementPage();

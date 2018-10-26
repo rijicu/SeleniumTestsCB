@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import stoykovPages.AllCreditsPage;
 import stoykovPages.CreditDetailsPage;
 import stoykovPages.MainPage;
+import stoykovPages.StatementPage;
 import stoykovUtils.DriverFactory;
 
 /**
@@ -15,10 +16,13 @@ public class AllCreditsPageTest {
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
     private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
 
+    String treatyAccountNumber = "20630000000118.980";
+
 
     private MainPage mainPage = new MainPage();
     private AllCreditsPage allCreditsPage = new AllCreditsPage();
     private CreditDetailsPage creditDetailsPage = new CreditDetailsPage();
+    private StatementPage statementPage = new StatementPage();
 
 
 
@@ -86,7 +90,9 @@ public class AllCreditsPageTest {
         mainPage.openUserMainPage()
                 .openAllCreditsPage()
                 .openCreditDetailsPage(creditTreatyActiveStatus)
-                .openTreatyStatementPage();
+                .openTreatyStatementPage()
+                .createOperStatement();
+        Assert.assertTrue(statementPage.isCorrectAccountNumberInStatement(treatyAccountNumber), "Account number is not expected.\n");
         //check only text message on the page
         //Assert.assertEquals();
     }

@@ -6,7 +6,15 @@ import org.openqa.selenium.By;
  * Created by stoykov on 10.08.2018.
  */
 public class StatementPage extends AbstractPage {
+    private By accountNumberInStatement = By.xpath("//td[5]/div/div");
 
+
+    public boolean isCorrectAccountNumberInStatement(String correctAccountNumberInStatement){
+        if (getText(accountNumberInStatement).equals(correctAccountNumberInStatement)){
+            return true;
+        }
+        return false;
+    }
 
     public void createOperStatement(){
         openFilter();

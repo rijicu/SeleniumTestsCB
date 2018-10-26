@@ -43,7 +43,7 @@ public class StoykovTestBase {
     }
 
     protected void userLoginAndCheckMainePageIsOpen() throws InterruptedException {
-      checkIsUserCanLogin(By.cssSelector("span"), "Вітаємо, Стойков Илья Васильевич!");
+      checkIsUserCanLogin(By.cssSelector("span"), "?????, ??????? ???? ??????????!");
       userLogOff();
     }
 
@@ -65,7 +65,7 @@ public class StoykovTestBase {
 
     private void deleteBindedIPAddressOnUser() throws InterruptedException {
       clickAndWait(By.linkText("StoykovIV"));
-      // Удаляем привязанный IP
+      // ??????? ??????????? IP
       clickAndWait(By.cssSelector("#t1 > a.k-link"));
       clickAndWait(By.xpath("//form[@id='userInfoInfo']/div[6]/div/div/div[2]/div/div/span"));
       driver.findElement(By.cssSelector("div.saveButton.saveUserParams > p")).click();
