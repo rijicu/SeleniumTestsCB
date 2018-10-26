@@ -11,5 +11,13 @@ public class PartialRepaymentPage extends AbstractPage {
     @FindBy(css = "[aria-controls='accountPay_listbox']")
     private WebElement selectAccount;
 
-    
+    @FindBy(xpath = "//span[text()=' 26004002813159.980']")
+    private WebElement accountInList;
+
+    public void selectAccountFromList(){
+        selectOptionByWebElement(selectAccount, accountInList);
+    }
+
+
+
 }

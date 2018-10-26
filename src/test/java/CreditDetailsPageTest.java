@@ -29,7 +29,8 @@ public class CreditDetailsPageTest {
         mainPage.openUserMainPage()
                 .openAllCreditsPage()
                 .openCreditDetailsPage(creditTreatyActiveStatus)
-                .openPartialRepaymentPage();
+                .openPartialRepaymentPage()
+                .selectAccountFromList();
 
     }
 

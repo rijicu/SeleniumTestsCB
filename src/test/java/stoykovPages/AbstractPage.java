@@ -166,12 +166,23 @@ public abstract class AbstractPage {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(link)));
     }
 
+    public void waitUntilWebElementPresent(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
 /* Пример выбора элемента из выпадающего списка
     public void selectOptionByXpath(String controlName, String optionName) {
         driver.findElement(By.name(controlName)).click();
         driver.findElement(By.xpath("//option[text()='" + optionName + "']")).click();
     }
 */
+    public void selectOptionByWebElement(WebElement controlElement, WebElement optionElement) {
+    controlElement.click();
+    //System.out.println("//input[@name='" + optionName + "']");
+    waitUntilWebElementPresent(optionElement);
+    optionElement.click();
+
+    }
 
     public void selectOptionByXpath(By controlXpath, By optionXpath) {
         driver.findElement(controlXpath).click();
