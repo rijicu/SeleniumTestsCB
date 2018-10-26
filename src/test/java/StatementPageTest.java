@@ -28,7 +28,7 @@ public class StatementPageTest {
        Assert.assertTrue(statementPage.isCorrectClientOnPage());
     }
 
-    @Test
+    @Test(enabled = false)
     public void createStatementMany(){
         mainPage
                 .openStatementPage()

@@ -18,12 +18,18 @@ public class CreditDetailsPage extends AbstractPage {
 
     @FindBy(id = "localName")
     private WebElement treatyLocalNameField;
-
     @FindBy(xpath = "//div[contains((@class), 'action-savename')]")
     private WebElement changeTreatyNameButton;
-
     @FindBy(css = "div[data-url*='CreditsEvents']>p")
     private WebElement paymentCalendarButton;
+    @FindBy(css="div[data-url*='TreatyCreditActions']>p")
+    private WebElement operationsHistoryButton;
+
+    public CreditsOperationsHistoryPage openCreditsOperationsHistoryPage(){
+        operationsHistoryButton.click();
+        waitUntilLoadingImageNotPresent();
+        return new CreditsOperationsHistoryPage();
+    }
 
     public PaymentCalendarPage openPaymentCalendarPage(){
         paymentCalendarButton.click();

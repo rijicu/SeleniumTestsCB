@@ -1,11 +1,9 @@
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import stoykovPages.AllCreditsPage;
-import stoykovPages.CreditDetailsPage;
-import stoykovPages.MainPage;
-import stoykovPages.StatementPage;
+import stoykovPages.*;
 import stoykovUtils.DriverFactory;
 
 /**
@@ -19,10 +17,20 @@ public class CreditDetailsPageTest {
     private AllCreditsPage allCreditsPage = new AllCreditsPage();
     private CreditDetailsPage creditDetailsPage = new CreditDetailsPage();
     private StatementPage statementPage = new StatementPage();
+    private CreditsOperationsHistoryPage creditsOperationsHistoryPage = new CreditsOperationsHistoryPage();
 
     @BeforeClass
     public void loginToPage() throws Exception {
         mainPage.loginAsTreatyUser();
+    }
+
+    @Test
+    public void checkTreatyOperationsHistory(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openCreditsOperationsHistoryPage();
+        Assert.assertTrue(creditsOperationsHistoryPage.isCorrectTreatyNumberInFilter("N20.00.004174"),"Treaty number on filter is not expected.\n");
     }
 
     @Test
