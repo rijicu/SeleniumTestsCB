@@ -43,8 +43,8 @@ public class MainPage extends AbstractPage {
     private By myAccountsPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Account/List\']");
     private By paymentsMenuLink = By.xpath("//span[contains(normalize-space(@class), 'icon icon-menu-payments')]");
     private By paymentsHistoryPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Payment/List\']");
-    private By creditsMenuLink = By.xpath("//li[6]/p");
-    private By allCreditsPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Treaty/CreditsList\']");
+    private By creditsMenuLink = By.cssSelector("#menu-Group-Credits>p");
+    private By allCreditsPageLink = By.cssSelector("a[href*='CreditsList']");
     private By statementMenuLink = By.xpath("//a[@href=\'/iTiny20_Night/Account/Extract\']");
 
     public void loginToiTiny(String login, String password){

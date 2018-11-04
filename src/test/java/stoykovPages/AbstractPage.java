@@ -45,6 +45,10 @@ public abstract class AbstractPage {
     @FindBy(xpath = "//p[@class='action-clean']")
     private WebElement cleanButtonLink;
 
+    @FindBy(css = "div.saveButton")
+    private WebElement saveButton;
+
+
     AbstractPage() {
         PageFactory.initElements(driver, this);
     }
@@ -53,6 +57,11 @@ public abstract class AbstractPage {
         if (isElementPresent(by)){
            // String elementText =
         }
+    }
+
+    public void clickSaveButton(){
+        saveButton.isDisplayed();
+        saveButton.click();
     }
 
     public void clearFilter( ){
@@ -167,7 +176,7 @@ public abstract class AbstractPage {
     }
 
     public void waitUntilWebElementPresent(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
 /* Пример выбора элемента из выпадающего списка

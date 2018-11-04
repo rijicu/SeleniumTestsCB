@@ -32,6 +32,7 @@ public class CreditDetailsPageTest {
                 .openPartialRepaymentPage()
                 .selectAccountFromList();
 
+
     }
 
     @Test

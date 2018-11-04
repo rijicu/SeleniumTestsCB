@@ -14,8 +14,21 @@ public class PartialRepaymentPage extends AbstractPage {
     @FindBy(xpath = "//span[text()=' 26004002813159.980']")
     private WebElement accountInList;
 
+    @FindBy(css = ".textAmount")
+    private WebElement amountInput;
+
+    @FindBy(css = "span#acc_rest")
+    private WebElement accountRestField;
+
+
+
+
     public void selectAccountFromList(){
         selectOptionByWebElement(selectAccount, accountInList);
+    }
+
+    public void setAmountInput(){
+        amountInput.sendKeys("1500");
     }
 
 
