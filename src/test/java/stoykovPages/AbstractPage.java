@@ -80,6 +80,10 @@ public abstract class AbstractPage {
         return driver.findElement(element).getText();
     }
 
+    public String getWebElementText(WebElement element){
+        return element.getText();
+    }
+
     public String getTitle(){
         return driver.getTitle();
     }

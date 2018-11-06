@@ -6,9 +6,7 @@ import org.testng.annotations.Test;
 import stoykovPages.*;
 import stoykovUtils.DriverFactory;
 
-/**
- * Created by stoykov on 26.10.2018.
- */
+
 public class CreditDetailsPageTest {
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
     private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
@@ -18,21 +16,11 @@ public class CreditDetailsPageTest {
     private CreditDetailsPage creditDetailsPage = new CreditDetailsPage();
     private StatementPage statementPage = new StatementPage();
     private CreditsOperationsHistoryPage creditsOperationsHistoryPage = new CreditsOperationsHistoryPage();
+    private PartialRepaymentPage partialRepaymentPage = new PartialRepaymentPage();
 
     @BeforeClass
     public void loginToPage() throws Exception {
         mainPage.loginAsTreatyUser();
-    }
-
-    @Test
-    public void createPartialRepayment(){
-        mainPage.openUserMainPage()
-                .openAllCreditsPage()
-                .openCreditDetailsPage(creditTreatyActiveStatus)
-                .openPartialRepaymentPage()
-                .selectAccountFromList();
-
-
     }
 
     @Test
@@ -52,6 +40,38 @@ public class CreditDetailsPageTest {
                 .openPaymentCalendarPage();
     }
 
+    @Test
+    public void createPartialRepaymentWithEmptyFields(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openPartialRepaymentPage()
+                .createPartialRepaymentWithEmptyFields();
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+
+    }
+
+    @Test
+    public void createPartialRepaymentWithEmptySumField(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openPartialRepaymentPage()
+                .createPartialRepaymentWithEmptySumField();
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+
+    }
+
+    @Test
+    public void createPartialRepaymentWithEmptyAccountField(){
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openPartialRepaymentPage()
+                .createPartialRepaymentWithEmptyAccountField();
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+
+    }
 
     @AfterClass
     public void tearDown(){

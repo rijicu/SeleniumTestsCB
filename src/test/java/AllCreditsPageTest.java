@@ -93,8 +93,6 @@ public class AllCreditsPageTest {
                 .openTreatyStatementPage()
                 .createOperStatement();
         Assert.assertTrue(statementPage.isCorrectAccountNumberInStatement(treatyAccountNumber), "Account number is not expected.\n");
-        //check only text message on the page
-        //Assert.assertEquals();
     }
 
 
