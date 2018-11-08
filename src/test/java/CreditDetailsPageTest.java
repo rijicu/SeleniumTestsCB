@@ -47,7 +47,7 @@ public class CreditDetailsPageTest {
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPartialRepaymentPage()
                 .createPartialRepaymentWithEmptyFields();
-        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Рахунок не вказано");
 
     }
 
@@ -58,7 +58,7 @@ public class CreditDetailsPageTest {
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPartialRepaymentPage()
                 .createPartialRepaymentWithEmptySumField();
-        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Сума документу повинна бути більше нуля");
 
     }
 
@@ -69,7 +69,7 @@ public class CreditDetailsPageTest {
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPartialRepaymentPage()
                 .createPartialRepaymentWithEmptyAccountField();
-        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Неможливо виконати операцію. Спробуйте пізніше");
+        Assert.assertEquals(partialRepaymentPage.getErrorText(),"Рахунок не вказано");
 
     }
 
