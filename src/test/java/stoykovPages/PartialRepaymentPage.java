@@ -11,7 +11,7 @@ public class PartialRepaymentPage extends AbstractPage {
     @FindBy(css = "[aria-controls='accountPay_listbox']")
     private WebElement selectAccount;
 
-    @FindBy(xpath = "//span[text()=' 26004002813159.980']")
+    @FindBy(xpath = "//span[text()=' 26004002813159.980 UAH']")
     private WebElement accountInList;
 
     @FindBy(css = ".textAmount")
@@ -46,6 +46,10 @@ public class PartialRepaymentPage extends AbstractPage {
             }
         }
         clickSaveButton();
+    }
+
+    public void createCorrectPartialRepayment(){
+        createPartialRepayment("Account", "Sum");
     }
 
     public void createPartialRepaymentWithEmptyFields(){

@@ -8,6 +8,9 @@ import stoykovUtils.DriverFactory;
 
 
 public class CreditDetailsPageTest {
+    private String treatyAccountNumber = "20630000000118.980";
+    private String paymentCalendarPageTitle = "А24 Бізнес - Платіжний календар";
+
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
     private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
 
@@ -17,10 +20,21 @@ public class CreditDetailsPageTest {
     private StatementPage statementPage = new StatementPage();
     private CreditsOperationsHistoryPage creditsOperationsHistoryPage = new CreditsOperationsHistoryPage();
     private PartialRepaymentPage partialRepaymentPage = new PartialRepaymentPage();
+    private PaymentCalendarPage paymentCalendarPage = new PaymentCalendarPage();
 
     @BeforeClass
     public void loginToPage() throws Exception {
         mainPage.loginAsTreatyUser();
+    }
+
+    @Test
+    public void  checkTreatyStatement() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openTreatyStatementPage()
+                .createOperStatement();
+        Assert.assertTrue(statementPage.isCorrectAccountNumberInStatement(treatyAccountNumber), "Account number is not expected.\n");
     }
 
     @Test
@@ -38,6 +52,17 @@ public class CreditDetailsPageTest {
                 .openAllCreditsPage()
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPaymentCalendarPage();
+        String actualTitle = paymentCalendarPage.getTitle();
+        Assert.assertTrue(paymentCalendarPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + paymentCalendarPageTitle + "\nActual: " + actualTitle);
+    }
+
+    @Test
+    public void createCorrectPartialRepayment() {
+        mainPage.openUserMainPage()
+                .openAllCreditsPage()
+                .openCreditDetailsPage(creditTreatyActiveStatus)
+                .openPartialRepaymentPage()
+                .createCorrectPartialRepayment();
     }
 
     @Test

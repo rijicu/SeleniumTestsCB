@@ -118,6 +118,19 @@ public abstract class AbstractPage {
         driver.findElement(link).click();
     }
 
+    public void clickWebElement(WebElement element){
+        int attempts = 0;
+        while (attempts < 5){
+            try{
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+                element.click();
+                break;
+            } catch (org.openqa.selenium.WebDriverException e){
+            }
+            attempts++;
+        }
+    }
+
     public void waitForVisibilityOf(By locator, Integer... timeOutInSeconds){
         int attempts = 0;
         while (attempts < 2){
@@ -129,6 +142,19 @@ public abstract class AbstractPage {
             attempts++;
         }
     }
+
+    public void waitForWebElementToBeClickable(WebElement element){
+        int attempts = 0;
+        while (attempts < 10){
+            try {
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+                break;
+            } catch (org.openqa.selenium.WebDriverException e){
+            }
+            attempts++;
+        }
+    }
+
 
     public void waitForAttributeToBe(By locator, String attribute, String expectedValue){
         int attempts = 0;
@@ -159,7 +185,7 @@ public abstract class AbstractPage {
     }
 
     private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
-        timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;
+        timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 10;
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         wait.until(condition);
     }
@@ -192,8 +218,10 @@ public abstract class AbstractPage {
     public void selectOptionByWebElement(WebElement controlElement, WebElement optionElement) {
     controlElement.click();
     //System.out.println("//input[@name='" + optionName + "']");
-    waitUntilWebElementPresent(optionElement);
-    optionElement.click();
+    //waitUntilWebElementPresent(optionElement);
+    //waitForWebElementToBeClickable(optionElement);
+    //optionElement.click();
+    clickWebElement(optionElement);
 
     }
 
