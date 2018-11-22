@@ -80,6 +80,8 @@ public class CreditDetailsPageTest {
                 .openCreditsOperationsHistoryPage()
                 .clickRequestEditButton()
                 .editRequestSum();
+        String actualTitle = creditsOperationsHistoryPage.getTitle();
+        Assert.assertTrue(creditsOperationsHistoryPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + creditsOperationsHistoryPageTitle + "\nActual: " + actualTitle + "\n");
         String actualTreatyAmount = creditsOperationsHistoryPage.getTreatyAmount();
         Assert.assertTrue(actualTreatyAmount.equals("1 501,00"), "Treaty amount is not expected. \nExpected: 1 501,00" + "\nActual: " + actualTreatyAmount + "\n");
     }
