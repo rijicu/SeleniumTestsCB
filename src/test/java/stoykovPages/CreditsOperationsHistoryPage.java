@@ -47,7 +47,7 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
         return treatyCodeInList.getText();
     }
 
-    public String getTreatyTipeFromOperationsPage(){
+    public String getTreatyTypeFromOperationsPage(){
         return treatyTipeInList.getText();
     }
 

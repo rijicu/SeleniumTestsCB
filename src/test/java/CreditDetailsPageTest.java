@@ -70,7 +70,7 @@ public class CreditDetailsPageTest {
         Assert.assertTrue(creditsOperationsHistoryPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + creditsOperationsHistoryPageTitle + "\nActual: " + actualTitle + "\n");
         String actualTreatyCodeInRequestsList = creditsOperationsHistoryPage.getTreatyNumberFromOperationsPage();
         Assert.assertEquals(actualTreatyCodeInRequestsList, creditTreatyCode, "Treaty code is not expected. \nExpected: " + creditTreatyCode + "\nActual: " + actualTreatyCodeInRequestsList + "\n");
-        String actualTreatyTypeInRequestsList = creditsOperationsHistoryPage.getTreatyTipeFromOperationsPage();
+        String actualTreatyTypeInRequestsList = creditsOperationsHistoryPage.getTreatyTypeFromOperationsPage();
         Assert.assertTrue(creditTreatyType.equals(actualTreatyTypeInRequestsList),"Treaty type is not expected. \nExpected: " + creditTreatyType + "\nActual: " + actualTreatyTypeInRequestsList + "\n");
     }
 
