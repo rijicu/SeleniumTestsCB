@@ -23,6 +23,9 @@ public class PartialRepaymentPage extends AbstractPage {
     @FindBy(css = "span.text")
     private WebElement errorText;
 
+    @FindBy(css = "span.rest_amount")
+    private WebElement accountRestAmount;
+
 
 
 
@@ -30,9 +33,15 @@ public class PartialRepaymentPage extends AbstractPage {
         selectOptionByWebElement(selectAccount, accountInList);
     }
 
-    public void setAmountInput(){
+    public void setAmountInput(String sum){
         amountInput.clear();
-        amountInput.sendKeys("1500");
+        amountInput.sendKeys(sum);
+    }
+
+    public void editRequestSum(){
+        waitUntilWebElementPresent(accountRestAmount);
+        setAmountInput("1501");
+        clickSaveButton();
     }
 
     public void createPartialRepayment(String ...fieldName){
@@ -42,7 +51,7 @@ public class PartialRepaymentPage extends AbstractPage {
                 selectAccountFromList();
             }
             if (f.contains("Sum")) {
-                setAmountInput();
+                setAmountInput("1500");
             }
         }
         clickSaveButton();
@@ -50,6 +59,7 @@ public class PartialRepaymentPage extends AbstractPage {
 
     public void createCorrectPartialRepayment(){
         createPartialRepayment("Account", "Sum");
+        waitUntilLoadingImageNotPresent();
     }
 
     public void createPartialRepaymentWithEmptyFields(){

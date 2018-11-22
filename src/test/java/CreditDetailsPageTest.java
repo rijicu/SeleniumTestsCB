@@ -10,6 +10,9 @@ import stoykovUtils.DriverFactory;
 public class CreditDetailsPageTest {
     private String treatyAccountNumber = "20630000000118.980";
     private String paymentCalendarPageTitle = "А24 Бізнес - Платіжний календар";
+    private String creditsOperationsHistoryPageTitle = "А24 Бізнес - Історія операцій";
+    private String creditTreatyType = "Часткове погашення";
+    private String creditTreatyCode = "N20.00.004174";
 
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
     private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
@@ -53,7 +56,7 @@ public class CreditDetailsPageTest {
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPaymentCalendarPage();
         String actualTitle = paymentCalendarPage.getTitle();
-        Assert.assertTrue(paymentCalendarPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + paymentCalendarPageTitle + "\nActual: " + actualTitle);
+        Assert.assertTrue(paymentCalendarPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + paymentCalendarPageTitle + "\nActual: " + actualTitle + "\n");
     }
 
     @Test
@@ -63,6 +66,22 @@ public class CreditDetailsPageTest {
                 .openCreditDetailsPage(creditTreatyActiveStatus)
                 .openPartialRepaymentPage()
                 .createCorrectPartialRepayment();
+        String actualTitle = creditsOperationsHistoryPage.getTitle();
+        Assert.assertTrue(creditsOperationsHistoryPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + creditsOperationsHistoryPageTitle + "\nActual: " + actualTitle + "\n");
+        String actualTreatyCodeInRequestsList = creditsOperationsHistoryPage.getTreatyNumberFromOperationsPage();
+        Assert.assertEquals(actualTreatyCodeInRequestsList, creditTreatyCode, "Treaty code is not expected. \nExpected: " + creditTreatyCode + "\nActual: " + actualTreatyCodeInRequestsList + "\n");
+        String actualTreatyTypeInRequestsList = creditsOperationsHistoryPage.getTreatyTipeFromOperationsPage();
+        Assert.assertTrue(creditTreatyType.equals(actualTreatyTypeInRequestsList),"Treaty type is not expected. \nExpected: " + creditTreatyType + "\nActual: " + actualTreatyTypeInRequestsList + "\n");
+    }
+
+    @Test(dependsOnMethods = "createCorrectPartialRepayment")
+    public void editCreditRequestPartialRepayment(){
+        mainPage.openUserMainPage()
+                .openCreditsOperationsHistoryPage()
+                .clickRequestEditButton()
+                .editRequestSum();
+        String actualTreatyAmount = creditsOperationsHistoryPage.getTreatyAmount();
+        Assert.assertTrue(actualTreatyAmount.equals("1 501,00"), "Treaty amount is not expected. \nExpected: 1 501,00" + "\nActual: " + actualTreatyAmount + "\n");
     }
 
     @Test

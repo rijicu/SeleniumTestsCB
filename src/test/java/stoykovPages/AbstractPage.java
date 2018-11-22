@@ -115,6 +115,7 @@ public abstract class AbstractPage {
     }
 
     public void clickAt(By link) {
+
         driver.findElement(link).click();
     }
 

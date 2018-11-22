@@ -45,6 +45,7 @@ public class MainPage extends AbstractPage {
     private By paymentsHistoryPageLink = By.xpath("//a[@href=\'/iTiny20_Night/Payment/List\']");
     private By creditsMenuLink = By.cssSelector("#menu-Group-Credits>p");
     private By allCreditsPageLink = By.cssSelector("a[href*='CreditsList']");
+    private By creditsOperationsList = By.cssSelector("a[href*='TreatyCreditActions']");
     private By statementMenuLink = By.xpath("//a[@href=\'/iTiny20_Night/Account/Extract\']");
 
     public void loginToiTiny(String login, String password){
@@ -87,6 +88,15 @@ public class MainPage extends AbstractPage {
         waitUntilLoadingImageNotPresent();
         clearFilter();
         return new AllCreditsPage();
+    }
+
+    public CreditsOperationsHistoryPage openCreditsOperationsHistoryPage(){
+        clickAt(creditsMenuLink);
+        waitUntilElementPresent(creditsOperationsList);
+        clickAt(creditsOperationsList);
+        waitUntilLoadingImageNotPresent();
+        clearFilter();
+        return new CreditsOperationsHistoryPage();
     }
 
     public PaymentsHistoryPage openPaymentsHistoryPage(){
