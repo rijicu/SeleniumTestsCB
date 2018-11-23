@@ -3,9 +3,6 @@ package stoykovPages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by stoykov on 26.10.2018.
- */
 public class PartialRepaymentPage extends AbstractPage {
 
     @FindBy(css = "[aria-controls='accountPay_listbox']")
@@ -26,6 +23,10 @@ public class PartialRepaymentPage extends AbstractPage {
     @FindBy(css = "span.rest_amount")
     private WebElement accountRestAmount;
 
+    @FindBy(xpath = "//input[@name='AccountPayId_input']")
+    private WebElement accountFieldLink;
+
+
 
 
 
@@ -39,7 +40,7 @@ public class PartialRepaymentPage extends AbstractPage {
     }
 
     public void editRequestSum(){
-        waitUntilWebElementPresent(accountRestAmount);
+        waitForAttributeInWebElementToBeNotEmpty(accountFieldLink,"value");
         setAmountInput("1501");
         clickSaveButton();
     }

@@ -21,6 +21,9 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
     @FindBy(xpath = "//tbody[@role='rowgroup']/tr[1]/td[4]")
     private WebElement treatyTipeInList;
 
+    @FindBy(xpath = "//tbody[@role='rowgroup']/tr[1]//a[contains((@href), 'CreditActionView')]")
+    private WebElement requestViewLinkInList;
+
     @FindBy(css = "a.icon-button-edit-active")
     private WebElement requestEditButton;
 
@@ -30,6 +33,21 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
     @FindAll(@FindBy(xpath = "//tbody[@role='rowgroup']/tr"))
     private List<WebElement> operationsRowsOnList;
 
+    @FindBy(css = "div.action-sign")
+    private WebElement signButton;
+
+    @FindBy(css = "div.action-unsign")
+    private WebElement unsignButton;
+
+    @FindBy(css = "div.action-send")
+    private WebElement sendButton;
+
+    @FindBy(css = "div.action-delete")
+    private WebElement deleteButton;
+
+    @FindBy(css = "div.action-recover")
+    private WebElement recoverButton;
+
     public boolean isCorrectTreatyNumberInFilter(String expectedTreatyNumberInFilter){
         openFilter();
         treatyNumberFieldInput.isDisplayed();
@@ -37,6 +55,11 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
             return true;
         }
         return false;
+    }
+
+    public PartialRepaymentViewPage openRequestToView(){
+        requestViewLinkInList.click();
+        return new PartialRepaymentViewPage();
     }
 
     public String getTreatyAmount(){
