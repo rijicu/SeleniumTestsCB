@@ -14,6 +14,7 @@ public class CreditDetailsPageTest {
     private String creditTreatyType = "Часткове погашення";
     private String creditTreatyCode = "N20.00.004174";
     private String expectedDocumentHeaderText = "Часткове погашення кредиту N20.00.004174 вiд 18.01.2018";
+    private String expectedTreatyHeaderText = "Деталі кредиту : N20.00.004174";
 
     private By creditTreatyWithDelayStatus = By.xpath("//a[text()='N20.00.004171 ']");
     private By creditTreatyActiveStatus = By.xpath("//a[text()='N20.00.004174 ']");
@@ -97,6 +98,18 @@ public class CreditDetailsPageTest {
                 .getDocumentHeaderText();
         Assert.assertTrue(documentHeaderText.equals(expectedDocumentHeaderText),"Document Header Text is not expected. \nExpected: " + expectedDocumentHeaderText + "\nActual: " + documentHeaderText + "\n");
         Assert.assertTrue(partialRepaymentViewPage.isSignButtonPresentOnViewPage(),"Sign button is not present on view page!\n");
+        Assert.assertTrue(partialRepaymentViewPage.isEditButtonPresentOnViewPage(),"Edit button is not present on view page!\n");
+        Assert.assertTrue(partialRepaymentViewPage.isDeleteButtonPresentOnViewPage(),"Delete button is not present on view page!\n");
+    }
+
+    @Test(dependsOnMethods = "createCorrectPartialRepayment")
+    public void openTreatyDetailsPageFromOperationsHistoryPage(){
+        mainPage.openUserMainPage()
+                .openCreditsOperationsHistoryPage()
+                .clickToTreatyCodeLinkInList();
+        Assert.assertTrue(creditDetailsPage.isTreatyNumberPresentOnDetailsPage(), "Treaty number is not present on treaty details page!\n");
+        Assert.assertEquals(creditDetailsPage.getDocumentHeaderText(), expectedTreatyHeaderText);
+
     }
 
     @Test

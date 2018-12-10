@@ -18,6 +18,8 @@ public class CreditDetailsPage extends AbstractPage {
 
     @FindBy(id = "localName")
     private WebElement treatyLocalNameField;
+    @FindBy(css = ".itemDetailsHeader > p")
+    private WebElement documentHeader;
     @FindBy(xpath = "//div[contains((@class), 'action-savename')]")
     private WebElement changeTreatyNameButton;
     @FindBy(css = "div[data-url*='CreditsEvents']>p")
@@ -26,6 +28,8 @@ public class CreditDetailsPage extends AbstractPage {
     private WebElement operationsHistoryButton;
     @FindBy(css="div[data-url*='CreditPay']>p")
     private WebElement partialRepaymentButton;
+    @FindBy(css = "div[data-url*='CreditFullPay']>p")
+    private WebElement fullRepayButton;
 
     public PartialRepaymentPage openPartialRepaymentPage(){
         partialRepaymentButton.click();
@@ -67,5 +71,9 @@ public class CreditDetailsPage extends AbstractPage {
         treatyLocalNameField.clear();
         treatyLocalNameField.sendKeys(newTreatyLocalName);
         changeTreatyNameButton.click();
+    }
+
+    public String getDocumentHeaderText(){
+        return documentHeader.getText();
     }
 }
