@@ -39,7 +39,7 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
     @FindAll(@FindBy(xpath = "//tbody[@role='rowgroup']/tr"))
     private List<WebElement> operationsRowsOnList;
 
-    @FindBy(css = "div.action-sign")
+/*    @FindBy(css = "div.action-sign")
     private WebElement signButton;
 
     @FindBy(css = "div.action-unsign")
@@ -52,7 +52,7 @@ public class CreditsOperationsHistoryPage extends AbstractPage {
     private WebElement deleteButton;
 
     @FindBy(css = "div.action-recover")
-    private WebElement recoverButton;
+    private WebElement recoverButton;*/
 
     public boolean isTreatyDeleteStatusIconInList(){
         return treatyDeleteStatusIconInList.isDisplayed();

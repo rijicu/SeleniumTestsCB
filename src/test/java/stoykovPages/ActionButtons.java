@@ -14,6 +14,12 @@ public class ActionButtons extends AbstractPage {
     @FindBy(css = "div.action-sign")
     private WebElement signButtonOn;
 
+    @FindBy(css = "div.action-unsign")
+    private WebElement unsignButton;
+
+    @FindBy(css = "div.action-send")
+    private WebElement sendButton;
+
     @FindBy(css = "div.action-delete")
     private WebElement deleteButton;
 
