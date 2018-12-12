@@ -43,6 +43,18 @@ public class PartialRepaymentViewPageTest {
                 "Treaty status is not correct after recover action!\n");
     }
 
+    @Test
+    public void editPartialRepaymentOperationFromViewPage(){
+        mainPage.openUserMainPage()
+                .openCreditsOperationsHistoryPage()
+                .openRequestToView()
+                .editOperationFromViewPage()
+                .editRequestSum("1505");
+        String actualTreatyAmount = creditsOperationsHistoryPage.getTreatyAmount();
+        Assert.assertTrue(actualTreatyAmount.equals("1 505,00"),
+                "Treaty amount is not expected. \nExpected: 1 505,00" + "\nActual: " + actualTreatyAmount + "\n");
+    }
+
 
     @AfterClass
     public void tearDown(){

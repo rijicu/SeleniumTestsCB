@@ -39,9 +39,9 @@ public class PartialRepaymentPage extends AbstractPage {
         amountInput.sendKeys(sum);
     }
 
-    public void editRequestSum(){
+    public void editRequestSum(String sum){
         waitForAttributeInWebElementToBeNotEmpty(accountFieldLink,"value");
-        setAmountInput("1501");
+        setAmountInput(sum);
         clickSaveButton();
     }
 

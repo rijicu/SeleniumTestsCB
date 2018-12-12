@@ -6,27 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class PartialRepaymentViewPage extends AbstractPage {
 
-    private ActionButtonsOnViewPage actionButtonsOnViewPage = new ActionButtonsOnViewPage();
+    private ActionButtons actionButtons = new ActionButtons();
     private ConfirmWindowButtons confirmWindowButtons = new ConfirmWindowButtons();
 
     @FindBy(css = "div.document .itemBlockHeader > p")
     private WebElement documentHeader;
-
-    @FindBy(css = "div[data-url*='Edit']")
-    private WebElement editButtonOnViewPage;
-
-    @FindBy(css = "div.action-sign")
-    private WebElement signButtonOnViewPage;
-
-    @FindBy(css = "div.action-delete")
-    private WebElement deleteButtonOnViewPage;
-
-    @FindBy(css = "p.action-delete-confirm")
-    private WebElement deleteConfirmButton;
-
-    @FindBy(css = "div.action-recover")
-    private WebElement recoverButton;
-
 
 
     @FindBy(css = "div.notify")
@@ -37,26 +21,31 @@ public class PartialRepaymentViewPage extends AbstractPage {
         return notifyMessage.isDisplayed();
     }
 
+    public PartialRepaymentPage editOperationFromViewPage(){
+        actionButtons.clickEditButton();
+        return new PartialRepaymentPage();
+    }
+
     public void recoverOperationFromViewPage(){
-        actionButtonsOnViewPage.clickRecoverButton();
+        actionButtons.clickRecoverButton();
         confirmWindowButtons.clickRecoverConfirmButton();
     }
 
     public void deleteOperationFromViewPage(){
-        actionButtonsOnViewPage.clickDeleteButton();
+        actionButtons.clickDeleteButton();
         confirmWindowButtons.clickDeleteConfirmButton();
     }
 
     public Boolean isEditButtonPresentOnViewPage(){
-        return  editButtonOnViewPage.isDisplayed();
+        return  actionButtons.isEditButtonDisplayed();
     }
 
     public Boolean isDeleteButtonPresentOnViewPage(){
-        return deleteButtonOnViewPage.isDisplayed();
+        return actionButtons.isDeleteButtonDisplayed();
     }
 
     public Boolean isSignButtonPresentOnViewPage(){
-        return signButtonOnViewPage.isDisplayed();
+        return actionButtons.isSignButtonDisplayed();
     }
 
     public String getDocumentHeaderText(){

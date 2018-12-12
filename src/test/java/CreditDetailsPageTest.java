@@ -82,7 +82,7 @@ public class CreditDetailsPageTest {
         mainPage.openUserMainPage()
                 .openCreditsOperationsHistoryPage()
                 .clickRequestEditButton()
-                .editRequestSum();
+                .editRequestSum("1501");
         String actualTitle = creditsOperationsHistoryPage.getTitle();
         Assert.assertTrue(creditsOperationsHistoryPageTitle.equals(actualTitle), "Page title is not expected. \nExpected: " + creditsOperationsHistoryPageTitle + "\nActual: " + actualTitle + "\n");
         String actualTreatyAmount = creditsOperationsHistoryPage.getTreatyAmount();

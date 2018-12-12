@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by stoykov on 08.12.2018.
  */
-public class ActionButtonsOnViewPage extends AbstractPage {
+public class ActionButtons extends AbstractPage {
 
     @FindBy(css = "div[data-url*='Edit']")
     private WebElement editButton;
@@ -20,11 +20,27 @@ public class ActionButtonsOnViewPage extends AbstractPage {
     @FindBy(css = "div.action-recover")
     private WebElement recoverButton;
 
+    public void clickEditButton(){
+        this.editButton.click();
+    }
+
     public void clickRecoverButton(){
         this.recoverButton.click();
     }
 
     public void clickDeleteButton(){
         this.deleteButton.click();
+    }
+
+    public boolean isEditButtonDisplayed(){
+        return editButton.isDisplayed();
+    }
+
+    public boolean isDeleteButtonDisplayed(){
+        return deleteButton.isDisplayed();
+    }
+
+    public boolean isSignButtonDisplayed(){
+        return signButtonOn.isDisplayed();
     }
 }
